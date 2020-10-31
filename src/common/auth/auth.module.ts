@@ -6,9 +6,7 @@ import { JwtStrategy }    from './auth.strategy';
 @Module({ 
     imports: [
         PassportModule,
-        ConfigModule.forRoot({
-            envFilePath: ['.env.development.local'],
-        }),
+        ConfigModule,
     ],
     providers: [JwtStrategy],
 })

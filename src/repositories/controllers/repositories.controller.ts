@@ -1,7 +1,7 @@
 import { CacheInterceptor, Controller, Get, Query, UseInterceptors, UsePipes  } from '@nestjs/common';
 
 import { JoiValidationPipe } from '../../common/validation/validation.pipe';
-import { RepositoriesService }  from '../providers/repositories.service';
+import { RepositoriesService }  from '../services/repositories.service';
 import { SearchInput } from '../models/repositories.search.interface';
 import { SearchSchema } from '../models/repositories.search.schema';
 import { JwtAuthenticationGuard } from 'src/common/auth/auth.guard';
