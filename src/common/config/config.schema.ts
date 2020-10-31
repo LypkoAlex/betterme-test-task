@@ -5,6 +5,7 @@ export const ConfigurationSchema = Joi.object({
     JWT_SECRET: Joi.string().required(),
     CACHE_TTL: Joi.string().required(),
     CACHE_SIZE: Joi.number().required(),
-    CACHE_REDIS_HOST: Joi.string().optional(),
+    REDIS_HOST: Joi.string().optional(),
+    REDIS_PORT: Joi.number().optional(),
     GITHUB_BASE_API_URL: Joi.string().required()
 });
