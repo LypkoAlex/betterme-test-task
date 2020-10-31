@@ -1,14 +1,17 @@
-import { Controller, Get, Query  } from '@nestjs/common';
+import { Controller, Get, Query, UsePipes  } from '@nestjs/common';
 
+import { JoiValidationPipe } from '../../common/validation/validation.pipe';
 import { RepositoriesService }  from '../providers/repositories.service';
 import { SearchInput } from '../models/repositories.search.interface';
+import { SearchSchema } from '../models/repositories.search.schema';
 
 @Controller()
 export class GithubController {
     constructor(private repositoriesService: RepositoriesService) {};
 
     @Get('repositories')
-    searchRepository(@Query() searchQuery: SearchInput){
-        return this.repositoriesService.search(searchQuery);
+    @UsePipes(new JoiValidationPipe(SearchSchema))
+    searchRepository(@Query() searchInput: SearchInput){
+        return this.repositoriesService.search(searchInput);
     }
 }

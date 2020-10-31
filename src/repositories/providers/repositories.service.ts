@@ -15,7 +15,7 @@ export class RepositoriesService {
         const baseUrl = this.configService.get<string>('GITHUB_BASE_API_URL');
 
         const query = queryString.stringify({
-            q        : `${searchInput.name}+in:name`,
+            q        : `${searchInput.name} in:name`,
             sort     : searchInput.sort,
             order    : searchInput.order,
             page     : searchInput.page,
