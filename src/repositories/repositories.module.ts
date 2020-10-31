@@ -1,5 +1,5 @@
-import { HttpModule, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { CacheModule, HttpModule, Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { GithubController } from './controllers/repositories.controller';
 import { RepositoriesService } from './providers/repositories.service';
@@ -11,7 +11,15 @@ import { AuthModule } from '../common/auth/auth.module';
         ConfigModule.forRoot({
             envFilePath: ['.env.development.local'],
         }),
-        AuthModule
+        AuthModule,
+        CacheModule.registerAsync({
+            imports: [ConfigModule],
+            useFactory: async (configService: ConfigService) => ({
+                ttl: configService.get<string>('CACHE_TTL'),
+                max: configService.get<string>('CACHE_SIZE'),
+            }),
+            inject: [ConfigService],
+        })
     ],
     controllers: [GithubController],
     providers: [RepositoriesService],

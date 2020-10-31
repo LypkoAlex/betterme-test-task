@@ -1,4 +1,4 @@
-import { Controller, Get, Query, UsePipes  } from '@nestjs/common';
+import { CacheInterceptor, Controller, Get, Query, UseInterceptors, UsePipes  } from '@nestjs/common';
 
 import { JoiValidationPipe } from '../../common/validation/validation.pipe';
 import { RepositoriesService }  from '../providers/repositories.service';
@@ -9,6 +9,7 @@ import { UseGuards } from '@nestjs/common/decorators/core/use-guards.decorator';
 
 @Controller()
 @UseGuards(JwtAuthenticationGuard)
+@UseInterceptors(CacheInterceptor)
 export class GithubController {
     constructor(private repositoriesService: RepositoriesService) {};
 
