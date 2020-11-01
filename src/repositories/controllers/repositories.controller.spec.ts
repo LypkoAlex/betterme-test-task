@@ -64,5 +64,5 @@ describe('Repositories Controller', () => {
             expect(await controller.searchRepository(searchReq)).toEqual(searchRes);
             expect(repositoriesServiceMock.search).toBeCalled();
         });
-    })
+    });
 });
