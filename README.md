@@ -1,4 +1,4 @@
-## Api Documentstion
+## Api documentation
 
 Endpoint: `GET /repositories?name=<string>`
 - Accepted query params:
@@ -28,6 +28,14 @@ $ npm install
 
 ```
 $ sudo docker run --name better-redis -p 6379:6379 redis
+```
+
+## Configure service
+
+```
+$ mv .env.example .env
+
+$ vim .env
 ```
 
 ## Running the app

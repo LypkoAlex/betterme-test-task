@@ -3,6 +3,7 @@ import { SearchInput } from './repositories.search.interface';
 
 export const SearchSchema = Joi.object<SearchInput>({
     name: Joi.string()
+        .optional()
         .required(),
 
     page: Joi.number()
@@ -10,10 +11,12 @@ export const SearchSchema = Joi.object<SearchInput>({
         .default(1),
 
     sort: Joi.string()
+        .optional()
         .valid('forks', 'stars', 'updated', 'help-wanted-issues')
         .default('stars'),
 
     order: Joi.string()
+        .optional()
         .valid('desc', 'asc')
         .default('desc'),
 
