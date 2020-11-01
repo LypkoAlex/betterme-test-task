@@ -2,7 +2,7 @@ import { CacheModule, HttpModule, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as redisStore from 'cache-manager-redis-store';
 
-import { GithubController } from './controllers/repositories.controller';
+import { RepositoriesController } from './controllers/repositories.controller';
 import { RepositoriesService } from './services/repositories.service';
 import { AuthModule } from '../common/auth/auth.module';
 
@@ -29,7 +29,7 @@ import { AuthModule } from '../common/auth/auth.module';
         ConfigModule,
         AuthModule,
     ],
-    controllers: [GithubController],
+    controllers: [RepositoriesController],
     providers: [RepositoriesService],
 })
 export class RepositoriesModule {}
